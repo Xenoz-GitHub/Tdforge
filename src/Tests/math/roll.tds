@@ -1,0 +1,2 @@
+var r = roll(1, 10)
+say(r >= 1 and r <= 10)

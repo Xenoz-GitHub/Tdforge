@@ -1,0 +1,5 @@
+var count = 0
+while count < 3 do
+    say(count)
+    count = count + 1
+end

@@ -1,0 +1,60 @@
+namespace TdSharp.Core;
+
+public interface IGameEngine
+{
+    bool IsActive { get; }
+    void Clear(double r, double g, double b, double a);
+    void ShowSprite(string path, double x, double y, double rot, double scaleX, double scaleY, TdValue tint);
+    void ShowText(string text, double x, double y, double size, double r, double g, double b, double a);
+    void DrawRect(double x, double y, double w, double h, double r, double g, double b, double a);
+    void DrawCircle(double x, double y, double radius, double r, double g, double b, double a);
+    void DrawLine(double x1, double y1, double x2, double y2, double r, double g, double b, double a);
+    void DrawTilemap(TdValue tilemapData, double camX, double camY);
+    bool Holding(string key);
+    bool MouseTap(string button);
+    double MouseX();
+    double MouseY();
+    void PlaySound(string path);
+    void PlayMusic(string path);
+    void StopMusic();
+    void SetSoundVolume(double vol);
+    void SetMusicVolume(double vol);
+    bool IsPlaying(string path);
+    void Emit(string particleType, double x, double y, int count);
+    void Shake(double amplitude, double duration);
+    void FadeIn(double duration, byte r, byte g, byte b, byte a);
+    void FadeOut(double duration, byte r, byte g, byte b, byte a);
+    void Flash(byte r, byte g, byte b, byte a, double duration);
+    void Tween(TdValue target, string property, double toValue, double duration);
+    void Trail(string spritePath, bool enabled);
+    bool GamepadHeld(string button);
+    double GamepadAxis(string axis);
+    void SaveData(string path, TdValue data);
+    TdValue LoadData(string path);
+    double Timer(double seconds);
+    bool TimerElapsed(double timerId);
+    void Animate(string spritePath, string animation, double dt);
+    void AddAnimation(string name, List<int> frames, double speed);
+    int GetFrame(string spritePath);
+    void SetFrame(string spritePath, int frame);
+    bool AnimationFinished(string spritePath);
+    void CameraFollow(TdValue target, double smoothness);
+    void CameraZoom(double zoom);
+    void CameraRotate(double degrees);
+    void CameraBounds(double x, double y, double w, double h);
+    TdValue WorldToScreen(double worldX, double worldY);
+    void DrawHitbox(bool enabled);
+    void ShowFps(bool enabled);
+    void Profile(string functionName);
+    void Breakpoint();
+    void StepFrame();
+    double Noise(double x, double y);
+    TdValue Grid(int w, int h);
+    void FillRectMap(TdValue map, int x, int y, int w, int h, int tileId);
+    TdValue FindPath(double startX, double startY, double endX, double endY);
+    double PathLength(TdValue path);
+    void Reload();
+    void Record(string path);
+    void Playback(string path);
+    double TimeScale();
+}

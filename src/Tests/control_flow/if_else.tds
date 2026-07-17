@@ -1,0 +1,6 @@
+var x = 10
+if x > 5 then
+    say("big")
+else
+    say("small")
+end

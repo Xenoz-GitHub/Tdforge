@@ -1,0 +1,8 @@
+var health = 100
+var name = "Alex"
+var speed = 5.5
+var isReady = true
+say(health)
+say(name)
+say(speed)
+say(isReady)

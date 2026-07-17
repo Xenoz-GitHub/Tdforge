@@ -1,0 +1,3 @@
+import "lib.tds"
+say(double_it(5))
+say(greet("Td#"))

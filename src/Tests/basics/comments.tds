@@ -1,0 +1,7 @@
+// This is a comment
+say("hello") // inline comment
+/*
+Multi
+line
+*/
+say("world")

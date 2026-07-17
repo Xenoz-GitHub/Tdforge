@@ -1,0 +1,3 @@
+var stats = {hp=100, atk=10}
+say(stats.hp)
+say(stats.atk)

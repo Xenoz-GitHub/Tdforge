@@ -1,0 +1,8 @@
+var box = Rect(0, 0, 32, 32)
+var box2 = Rect(10, 10, 32, 32)
+say(box)
+say(box.x)
+say(box.y)
+say(box.w)
+say(box.h)
+say(box.hits(box2))

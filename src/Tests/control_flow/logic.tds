@@ -1,0 +1,7 @@
+var a = true
+var b = false
+say(a and a)
+say(a and b)
+say(a or b)
+say(not a)
+say(not b)

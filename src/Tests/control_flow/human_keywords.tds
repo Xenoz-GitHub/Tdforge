@@ -1,0 +1,49 @@
+// Blueprint = class
+blueprint Monster
+    function constructor(x, y)
+        this.x = x
+        this.y = y
+        this.hp = 50
+    end
+end
+
+var m = Monster(10, 20)
+say(m.hp)
+
+// as_long_as = while
+var count = 0
+as_long_as count < 3 do
+    count = count + 1
+end
+say(count)
+
+// repeat = for
+repeat i = 1 to 3 do
+    say(i)
+end
+
+// send_back = return
+function get_five()
+    send_back 5
+end
+say(get_five())
+
+// stop = break
+var j = 0
+while j < 10 do
+    if j == 2 then
+        stop
+    end
+    j = j + 1
+end
+say(j)
+
+// skip = continue
+var result = ""
+for k = 1 to 5 do
+    if k == 3 then
+        skip
+    end
+    result = result .. k
+end
+say(result)

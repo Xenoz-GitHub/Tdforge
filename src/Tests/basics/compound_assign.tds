@@ -1,0 +1,9 @@
+var score = 100
+score += 10
+say(score)
+score -= 20
+say(score)
+score *= 2
+say(score)
+score /= 5
+say(score)

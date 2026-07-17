@@ -1,0 +1,130 @@
+// ==========================================
+// TD# COMPLETE DEMO - Adventure.tds
+// ==========================================
+
+const GRAVITY = 980.0
+var player = nil
+var enemies = []
+var score = 0
+var game_over = false
+
+// ==========================================
+// CLASS: Player Blueprint
+// ==========================================
+class Player
+    function constructor(x, y)
+        this.x = x
+        this.y = y
+        this.hp = 100
+        this.is_on_ground = false
+    end
+
+    function jump()
+        if this.is_on_ground then
+            this.y = this.y - 100
+            this.is_on_ground = false
+            say("Player jumped!")
+        end
+    end
+
+    function update(dt)
+        if holding("right") then this.x = this.x + 300 * dt end
+        if holding("left") then this.x = this.x - 300 * dt end
+        this.y = this.y + (GRAVITY * dt)
+        if this.y > 450 then
+            this.y = 450
+            this.is_on_ground = true
+        end
+    end
+
+    function draw()
+        say("Player at: " .. this.x .. ", " .. this.y .. " HP: " .. this.hp)
+    end
+end
+
+// ==========================================
+// GAME EVENTS
+// ==========================================
+function start()
+    say("=== Welcome to Td# Adventure ===")
+    player = Player(100, 300)
+    spawn_enemies()
+end
+
+function tick(dt)
+    if not game_over then
+        player.update(dt)
+
+        for enemy in enemies do
+            var dist_to_enemy = dist(player.x, player.y, enemy.x, enemy.y)
+            if dist_to_enemy < 50 then
+                player.hp = player.hp - 20
+                say("Player hit! HP: " .. player.hp)
+                if player.hp <= 0 then
+                    game_over = true
+                    say("GAME OVER! Final Score: " .. score)
+                end
+            end
+        end
+    end
+end
+
+function paint()
+    clear(#1a1a2e)
+    say("Score: " .. score)
+    say("HP: " .. player.hp)
+    say("Enemies: " .. #enemies)
+
+    if game_over then
+        say("GAME OVER")
+    else
+        player.draw()
+        for enemy in enemies do
+            say("Enemy at: " .. enemy.x .. ", " .. enemy.y)
+        end
+    end
+end
+
+function pressed(key)
+    if key == "space" then
+        player.jump()
+    end
+
+    if key == "r" and game_over then
+        score = 0
+        game_over = false
+        player = Player(100, 300)
+        enemies = []
+        spawn_enemies()
+        say("Game Restarted!")
+    end
+
+    if key == "e" then
+        say("Searching for items...")
+        var found = roll(1, 10)
+        if found > 7 then
+            score = score + 50
+            say("Found 50 gold! Total: " .. score)
+        else
+            say("Nothing found.")
+        end
+    end
+end
+
+// ==========================================
+// HELPER FUNCTIONS
+// ==========================================
+function spawn_enemies()
+    for i = 1 to 5 do
+        var x = roll(50, 750)
+        var y = roll(50, 400)
+        var enemy = {
+            x = x,
+            y = y,
+            hp = 30,
+            type = "enemy"
+        }
+        enemies.push(enemy)
+    end
+    say("Spawned " .. #enemies .. " enemies.")
+end

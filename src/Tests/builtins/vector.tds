@@ -1,0 +1,4 @@
+var pos = Vector2(10, 20)
+say(pos)
+say(pos.x)
+say(pos.y)

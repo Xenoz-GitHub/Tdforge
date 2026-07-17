@@ -1,0 +1,8 @@
+var x = 7
+if x > 10 then
+    say(">10")
+elif x > 5 then
+    say(">5")
+else
+    say("<=5")
+end

@@ -1,0 +1,5 @@
+var path = "test_output.txt"
+write_file(path, "Hello, file!")
+say(read_file(path))
+say(file_exists(path))
+say(file_exists("nonexistent.txt"))

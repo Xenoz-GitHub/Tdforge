@@ -1,0 +1,7 @@
+var items = [1, 2, 3]
+say(#items)
+say(items[0])
+say(items[1])
+items.push(4)
+say(#items)
+say(items[3])

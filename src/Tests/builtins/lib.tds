@@ -1,0 +1,7 @@
+function double_it(x)
+    return x * 2
+end
+
+function greet(name)
+    return "Hello, " .. name .. "!"
+end

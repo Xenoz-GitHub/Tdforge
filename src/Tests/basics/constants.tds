@@ -1,0 +1,2 @@
+const GRAVITY = 980
+say(GRAVITY)

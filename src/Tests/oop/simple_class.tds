@@ -1,0 +1,17 @@
+class Player
+    function constructor(x, y)
+        this.x = x
+        this.y = y
+        this.hp = 100
+    end
+    function hurt(amount)
+        this.hp = this.hp - amount
+    end
+end
+
+var p = Player(10, 20)
+say(p.x)
+say(p.y)
+say(p.hp)
+p.hurt(30)
+say(p.hp)

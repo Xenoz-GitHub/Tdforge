@@ -1,0 +1,8 @@
+say("=== Td# Console Calculator ===")
+say("Enter two numbers to add.")
+
+var a = 10
+var b = 20
+var result = a + b
+
+say(a .. " + " .. b .. " = " .. result)

@@ -1,0 +1,106 @@
+// Td# Standard Library
+// import "stdlib.tds" to use
+
+// String utilities
+function trim(s)
+    local start = 1
+    local end_ = #s
+    while start <= end_ and s[start] == " " do start = start + 1 end
+    while end_ >= start and s[end_] == " " do end_ = end_ - 1 end
+    local result = ""
+    for i = start to end_ do result = result .. s[i] end
+    return result
+end
+
+function split(s, sep)
+    local result = {}
+    local current = ""
+    for i = 1 to #s do
+        if s[i] == sep then
+            result.push(current)
+            current = ""
+        else
+            current = current .. s[i]
+        end
+    end
+    result.push(current)
+    return result
+end
+
+function join(arr, sep)
+    local result = ""
+    local first = true
+    for item in arr do
+        if first then first = false else result = result .. sep end
+        result = result .. item
+    end
+    return result
+end
+
+function contains(s, sub)
+    if #sub > #s then return false end
+    for i = 1 to #s - #sub + 1 do
+        local match = true
+        for j = 1 to #sub do
+            if s[i + j - 1] != sub[j] then match = false break end
+        end
+        if match then return true end
+    end
+    return false
+end
+
+function starts_with(s, prefix)
+    if #prefix > #s then return false end
+    for i = 1 to #prefix do
+        if s[i] != prefix[i] then return false end
+    end
+    return true
+end
+
+function ends_with(s, suffix)
+    if #suffix > #s then return false end
+    local offset = #s - #suffix
+    for i = 1 to #suffix do
+        if s[offset + i] != suffix[i] then return false end
+    end
+    return true
+end
+
+// Math utilities
+function sum(arr)
+    local total = 0
+    for v in arr do total = total + v end
+    return total
+end
+
+function avg(arr)
+    if #arr == 0 then return 0 end
+    return sum(arr) / #arr
+end
+
+// Collection utilities
+function map(arr, fn)
+    local result = {}
+    for v in arr do result.push(fn(v)) end
+    return result
+end
+
+function filter(arr, fn)
+    local result = {}
+    for v in arr do
+        if fn(v) then result.push(v) end
+    end
+    return result
+end
+
+function reduce(arr, fn, initial)
+    local acc = initial
+    for v in arr do acc = fn(acc, v) end
+    return acc
+end
+
+function range(start, end_)
+    local result = {}
+    for i = start to end_ do result.push(i) end
+    return result
+end

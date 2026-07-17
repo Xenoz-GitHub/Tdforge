@@ -1,0 +1,7 @@
+say(abs(-5))
+say(min(3, 7))
+say(max(3, 7))
+say(clamp(10, 0, 5))
+say(clamp(-1, 0, 5))
+say(clamp(3, 0, 5))
+say(dist(0, 0, 3, 4))

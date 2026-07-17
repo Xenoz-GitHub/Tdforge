@@ -1,0 +1,6 @@
+var dir = "up"
+match dir
+    "up"    -> say("going up")
+    "down"  -> say("going down")
+    else    -> say("standing")
+end
